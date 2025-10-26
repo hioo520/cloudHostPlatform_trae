@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Layout, Menu, Typography } from 'antd';
 import { PieChartOutlined, AlertOutlined, DatabaseOutlined, BarChartOutlined, GiftOutlined } from '@ant-design/icons';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
@@ -12,7 +12,7 @@ interface LayoutProps {
 
 const menuItems = [
   {
-    key: '/',
+    key: '/dashboard',
     icon: <PieChartOutlined />,
     label: '仪表盘',
   },
@@ -46,6 +46,11 @@ const menuItems = [
 const CustomLayout: React.FC<LayoutProps> = ({ children }) => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleMenuClick = (e: any) => {
+    navigate(e.key);
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -68,6 +73,7 @@ const CustomLayout: React.FC<LayoutProps> = ({ children }) => {
           mode="inline" 
           items={menuItems}
           selectedKeys={[location.pathname]}
+          onClick={handleMenuClick}
           style={{ borderRight: 0 }}
         />
       </Sider>
