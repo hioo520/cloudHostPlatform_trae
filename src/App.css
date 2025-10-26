@@ -1,8 +1,24 @@
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 98%;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
   text-align: center;
+}
+
+/* 覆盖Ant Design默认样式，解决内容区域被压缩的问题 */
+:where(.css-dev-only-do-not-override-ac2jek).ant-layout.ant-layout-has-sider > .ant-layout,
+:where(.css-dev-only-do-not-override-ac2jek).ant-layout.ant-layout-has-sider > .ant-layout-content {
+  width: 100% !important;
+}
+
+/* 确保Layout组件正确显示 */
+.ant-layout {
+  width: 100%;
+}
+
+.ant-layout-content {
+  width: 100% !important;
 }
 
 .logo {
